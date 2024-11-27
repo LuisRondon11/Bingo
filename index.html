@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Cartones de Bingo</title>
+    <style>
+        .bingo-card {
+            display: inline-block;
+            margin: 10px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        .bingo-card table {
+            border-collapse: collapse;
+        }
+        .bingo-card td {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .card-number {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .bingo-card {
+                visibility: visible;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                page-break-after: always;
+            }
+            .bingo-card * {
+                visibility: visible;
+            }
+            .bingo-card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+        }
+  @media print {
+    .bingo-card {
+      page-break-after: always;
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+    </style>
+</head>
+<body>
+    <h1>Generador de Cartones de Bingo</h1>
+    <input type="number" id="cardCount" min="1" value="1">
+    <button onclick="generateCards()">Generar Cartones</button>
+    <button onclick="printCards()">Imprimir Cartones</button>
+    <div id="cardsContainer"></div>
+    <script src="bingo.js"></script>
+</body>
+</html>

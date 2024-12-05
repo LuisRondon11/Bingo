@@ -13,9 +13,14 @@ function generateBingoCard(cardNumber) {
     const card = document.createElement('div');
     card.className = 'bingo-card';
 
+    const cardName = document.createElement('div');
+    cardName.className = 'card-name';
+    cardName.textContent = `Gran Bingo Suerte y Fotuna`;
+    card.appendChild(cardName);
+
     const cardNumberDiv = document.createElement('div');
     cardNumberDiv.className = 'card-number';
-    cardNumberDiv.textContent = `Cartón #${cardNumber}`;
+    cardNumberDiv.textContent = `Cartón N°${cardNumber}`;
     card.appendChild(cardNumberDiv);
 
     const table = document.createElement('table');
@@ -35,7 +40,14 @@ function generateBingoCard(cardNumber) {
             const cell = row.insertCell();
             cell.textContent = numbers[j][i];
             if (i === 2 && j === 2) {
-                cell.textContent = 'FREE';
+                cell.textContent = '';
+                cell.style.background = '#000000ad';
+                const img = document.createElement('img');
+                img.src = 'trebol.png';
+                img.alt = 'Libre';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                cell.appendChild(img);
             }
         }
     }
